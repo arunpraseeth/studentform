@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Student Form</title>
+</head>
+<body>
+    <center>
+        <h1>Student Form</h1>
+            <form>
+                <table border="1">
+                    <tr>
+                        <td>
+                            <h5>Name</h5>
+                        </td>
+                        <td>
+                            <input type="text" placeholder="Your name" id="username" autocomplete="off">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <h5>Age</h5>
+                        </td>
+                        <td>
+                            <input type="Number" placeholder="Your age" id="userage">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <h5>Gender</h5>
+                        </td>
+                        <td>
+                            <input type="radio" id="usergender" name="gender" value="Male"> Male<input type="radio" id="usergender" name="gender" value="FeMale"> FeMale
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <h5>Course</h5>
+                        </td>
+                        <td>
+                            <select name="Course" id="usercourse">
+                                <option>Javascript</option>
+                                <option>Python</option>
+                                <option>SQL</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <h5>Email</h5>
+                        </td>
+                        <td>
+                            <input type="email" placeholder="Enter your email" id="useremail">
+                        </td>
+                    </tr>
+                </table>
+            </form>
+            <button id="save" onclick="saving()">Save</button>
+            <br>
+            <br>
+            <form>
+               <table border="1" id="resultrow">
+                <tr>
+                    <td>
+                        <h4>Name</h4>
+                    </td>
+                    <td>
+                        <h4>Age</h4>
+                    </td>
+                    <td>
+                        <h4>Course</h4>
+                    </td>
+                    <td>
+                        <h4>Gender</h4>
+                    </td>
+                    <td>
+                        <h4>Email</h4>
+                    </td>
+                    <td>
+                        <h4>Action</h4>
+                    </td>
+                </tr>
+                <tr>
+                    <td id="columnname">
+                        Arun
+                    </td>
+                    <td>
+                      28
+                    </td>
+                    <td>
+                      JS
+                    </td>
+                    <td>
+                        Male
+                    </td>
+                    <td>
+                        arun@arun.com
+                    </td>
+                    <td>
+                        <button type="button">Delete</button>
+                    </td>
+                </tr>
+               </table>
+            </form>
+    </center>
+</body>
+</html>
+
+<script>
+    var userName = document.getElementById("username")
+    var userAge = document.getElementById("userage")
+    var userGender = document.getElementById("usergender")
+    var userCourse = document.getElementById("usercourse")
+    var userEmail = document.getElementById("useremail")
+    var columnname = document.getElementById("columnname")
+    var resultrow = document.getElementById("resultrow")
+
+    function saving(){
+        var gen = ""
+        if(userGender.checked == true) {   
+        gen = "Male"
+        }else{
+            gen = "FeMale"
+        }
+        var createrow = document.createElement("tr")
+        createrow.innerHTML = `<td>${userName.value}</td><td>${userAge.value}</td><td>${userCourse.value}</td><td>${gen}</td><td>${userEmail.value}</td><td><button type= "button" onclick= "deletedetails(event)">Delete</button></td>`
+        resultrow.append(createrow)
+    }
+
+    function deletedetails(event){
+        event.target.parentElement.parentElement.remove()
+    }
+</script>
